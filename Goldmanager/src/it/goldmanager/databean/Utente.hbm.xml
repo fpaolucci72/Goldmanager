@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Utente" table="utente">
+        <id name="idUtente" type="java.lang.Integer">
+            <column name="ID_UTENTE" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ruolo" class="it.goldmanager.databean.Ruolo" fetch="select">
+            <column name="ID_RUOLO" not-null="true" />
+        </many-to-one>
+        <property name="cognome" type="string">
+            <column name="COGNOME" not-null="true">
+                <comment>Cognome dell utente</comment>
+            </column>
+        </property>
+        <property name="nome" type="string">
+            <column name="NOME">
+                <comment>Nome dell utente</comment>
+            </column>
+        </property>
+        <property name="username" type="string">
+            <column name="USERNAME" length="20" not-null="true" unique="true">
+                <comment>Username dell utente</comment>
+            </column>
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" not-null="true">
+                <comment>Password dell utente criptata</comment>
+            </column>
+        </property>
+        <property name="codicefiscale" type="string">
+            <column name="CODICEFISCALE" length="16">
+                <comment>Codice fiscale dell utente</comment>
+            </column>
+        </property>
+        <property name="attivoUtente" type="boolean">
+            <column name="ATTIVO_UTENTE" not-null="true">
+                <comment>Indica se l utente e attivo 0=false 1=true</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

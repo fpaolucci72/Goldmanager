@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Ddt" language="groovy" pageWidth="595" pageHeight="620" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24b6d4a4-59ff-4559-904e-157557a4d8a7">
+	<property name="ireport.zoom" value="2.1435888100000025"/>
+	<property name="ireport.x" value="114"/>
+	<property name="ireport.y" value="274"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="Logo" class="java.lang.String"/>
+	<parameter name="intestazione" class="java.lang.String"/>
+	<parameter name="indirizzo" class="java.lang.String"/>
+	<parameter name="cap" class="java.lang.String"/>
+	<parameter name="citta" class="java.lang.String"/>
+	<parameter name="provincia" class="java.lang.String"/>
+	<parameter name="telefono" class="java.lang.String"/>
+	<parameter name="fax" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<parameter name="slIntestazione" class="java.lang.String"/>
+	<parameter name="slIndirizzo" class="java.lang.String"/>
+	<parameter name="slCap" class="java.lang.String"/>
+	<parameter name="slCitta" class="java.lang.String"/>
+	<parameter name="slProvincia" class="java.lang.String"/>
+	<parameter name="slPartitaIva" class="java.lang.String"/>
+	<parameter name="slCodicefiscale" class="java.lang.String"/>
+	<parameter name="numeroBolla" class="java.lang.String"/>
+	<parameter name="inseritoBolla" class="java.lang.String"/>
+	<parameter name="intestazioneBM" class="java.lang.String"/>
+	<parameter name="indirizzoBM" class="java.lang.String"/>
+	<parameter name="capCittaPrBM" class="java.lang.String"/>
+	<parameter name="valGrBolla" class="java.lang.String"/>
+	<parameter name="totBolla" class="java.lang.String"/>
+	<field name="tipometallo.nomeTipometallo" class="java.lang.String"/>
+	<field name="tipometallo.descTipometallo" class="java.lang.String"/>
+	<field name="pesoNetto" class="java.lang.String"/>
+	<field name="descOggetto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<image>
+				<reportElement uuid="0c6c8177-a50e-446c-8efd-ac66bfae42dd" x="0" y="0" width="103" height="96"/>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b99dd18a-9aa2-4256-b658-b341366f2937" x="113" y="0" width="258" height="20"/>
+				<textElement markup="none">
+					<font size="10" isBold="true"/>
+					<paragraph tabStopWidth="100"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intestazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b15b3e77-18e5-41ee-91eb-297eb588b4b9" x="113" y="20" width="176" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{indirizzo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="537d4cb6-c402-4140-8c0a-47ddd822bae5" x="113" y="33" width="38" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{cap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e6879987-092f-46b9-9dab-15ebc37b5fe5" x="151" y="33" width="41" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{citta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9bd626d6-96f3-434d-b662-f83d6126b660" x="192" y="33" width="97" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["("+$P{provincia}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dae1d987-21e3-4197-83c4-557144137ac4" x="113" y="46" width="23" height="13"/>
+				<textElement/>
+				<text><![CDATA[Tel.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="993da605-2465-47b4-8898-758aed31c3c5" x="136" y="46" width="153" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="61f9c95a-e0ed-4669-9e08-fa67facbce40" x="113" y="59" width="23" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fax.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="91f53bca-478a-4f40-a113-9d4382315619" x="136" y="59" width="153" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="29315c64-ef93-47ba-b648-f59f0ab4c614" x="113" y="73" width="176" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e61c167a-44fd-4536-b704-8d1843224a8f" x="378" y="0" width="167" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slIntestazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9368643b-1bb9-4cd2-997f-c804148c1945" x="378" y="33" width="44" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5e17584-1ec0-4831-bcdc-18a0414b05b9" x="378" y="20" width="167" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slIndirizzo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ea89f2d-abee-414c-9d9d-3c453eed8b83" x="422" y="33" width="48" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCitta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bb7f139-c271-4a91-b54b-61cf5dc31c65" x="470" y="33" width="75" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["("+$P{slProvincia}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="119d6804-e5e6-4797-bfa4-74806fec6809" x="378" y="46" width="34" height="13"/>
+				<textElement/>
+				<text><![CDATA[P.IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39b05c0f-8eab-4266-910f-8740571292a4" x="378" y="59" width="34" height="14"/>
+				<textElement/>
+				<text><![CDATA[C.Fisc.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="38cbf3b9-5737-4104-a6b3-1dde3f1a987b" x="412" y="46" width="133" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slPartitaIva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a52ee99-eae3-4efc-9bde-5b0c1570c3e7" x="412" y="59" width="133" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCodicefiscale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="76" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6398556b-b6ad-4604-ba42-5733205757cd" x="65" y="6" width="50" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeroBolla} == null ? "" : $P{numeroBolla}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a74601f4-3957-44d2-bf9e-e04caefe3fe2" x="151" y="6" width="114" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inseritoBolla}  == null ? "" : $P{inseritoBolla}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b15ef43f-a2d8-4e91-8dcc-f67bc079dec9" x="1" y="6" width="65" height="20"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[D.D.T. N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17536980-efb1-4652-8db3-5eff122d5f04" x="276" y="12" width="38" height="14"/>
+				<textElement>
+					<font isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Spett.le]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="dbf7e339-3910-472c-8a0d-70dea5590dd3" x="276" y="26" width="278" height="14"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intestazioneBM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45aab072-2e7b-408c-832e-4ab2466a07f3" x="276" y="40" width="278" height="14"/>
+				<textElement>
+					<font isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{indirizzoBM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3f918979-d7a7-48a6-857d-bcc53f7bb241" x="276" y="54" width="278" height="14"/>
+				<textElement>
+					<font isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{capCittaPrBM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="615273c6-20ca-4ea5-bfcc-9871ff5a4946" x="125" y="6" width="26" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[del]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement uuid="b81a76f1-c0f1-429e-9846-777f005bbf46" x="82" y="0" width="89" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="41e7d6ea-554e-49ca-91f8-d332fcad4032" x="170" y="0" width="365" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Descrizione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23322b9b-6853-42a8-bd4b-2fbf4632465a" x="1" y="0" width="82" height="20"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<textField>
+				<reportElement uuid="3f03e011-fdf6-4588-a620-da27acea139d" x="32" y="0" width="51" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipometallo.nomeTipometallo} == null ? "" : $F{tipometallo.nomeTipometallo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ebcd62f-678e-4cd6-a463-e99868ec1fc0" x="82" y="0" width="89" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{pesoNetto} == null ? "" : $F{pesoNetto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c09f09ae-473f-4327-b5b5-996e85655993" x="170" y="0" width="365" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descOggetto} == null ? "" : $F{descOggetto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3b47fae2-e0e6-40cd-a2c2-3a7cdb0b781f" x="1" y="0" width="32" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipometallo.descTipometallo} == null ? "" : $F{tipometallo.descTipometallo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Prevent">
+			<textField>
+				<reportElement uuid="b402559e-a12a-4431-86e4-0df31520c5fc" x="124" y="1" width="77" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{valGrBolla} == null ? "" : $P{valGrBolla}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8eb42026-4dd7-4437-95f2-e605a046668a" x="390" y="0" width="144" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{totBolla} == null ? "" : $P{totBolla}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9ad4ad26-f441-4073-89af-292d403058e3" x="1" y="1" width="124" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valore unitario (999) al gr:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98b4f3f1-80df-4b29-8cd6-0a5047888975" x="314" y="0" width="77" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importo totale:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="91">
+			<staticText>
+				<reportElement uuid="8e9b9cb9-33c7-494a-827e-baef200e7181" x="71" y="11" width="341" height="13"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CAUSALE VENDITA: metallo vecchio ed usato come da registro ps]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="972c4f9f-21d8-4160-859c-4cfdf5af6b2a" x="0" y="34" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[Firma Conducente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a2ff9e2e-fbb2-4755-a846-cc86ad0155e4" x="0" y="63" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Firma Destinatario:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

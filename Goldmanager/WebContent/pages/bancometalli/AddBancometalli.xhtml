@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<h:form id="formnuovobancometallo">
+				<p:growl id="messages" />
+				<p:panel header="#{mex['bancometallo.nuovo.titolo']}"
+					style="width:50%" footer="">
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputText value="#{mex['bancometallo.intestazione']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="intestazione"
+							value="#{bancometalli.intestazione}" maxlength="100"
+							requiredMessage="#{mex['mex.intestazione.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.cognome']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="cognome"
+							value="#{bancometalli.cognome}" maxlength="100"
+							requiredMessage="#{mex['mex.cognome.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.nome']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="nome"
+							value="#{bancometalli.nome}"
+							requiredMessage="#{mex['mex.nome.required']}"
+							maxlength="60">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.indirizzo']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="indirizzo"
+							value="#{bancometalli.indirizzo}" maxlength="250"
+							requiredMessage="#{mex['mex.indirizzo.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.citta']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="citta"
+							value="#{bancometalli.citta}" maxlength="100"
+							requiredMessage="#{mex['mex.citta.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.provincia']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="provincia"
+							value="#{bancometalli.provincia}" maxlength="5"
+							requiredMessage="#{mex['mex.provincia.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.cap']}"
+							style="font-weight:bold" />
+						<p:inputText id="capres" required="true"
+							value="#{bancometalli.cap}"
+							requiredMessage="#{mex['mex.cap.required']}" maxlength="5">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.codicefiscale']}" />
+						<p:inputText id="codicefiscale"
+							value="#{bancometalli.codicefiscale}" maxlength="16">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.partitaiva']}" />
+						<p:inputText id="partitaiva" value="#{bancometalli.partitaIva}"
+							maxlength="50">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.email']}" />
+						<p:inputText id="email" value="#{bancometalli.email}"
+							maxlength="100">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.telfisso']}" />
+						<p:inputText id="telefono" value="#{bancometalli.telefono}"
+							maxlength="20">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.telcell']}" />
+						<p:inputText id="mobile" value="#{bancometalli.mobile}"
+							maxlength="20">
+						</p:inputText>
+						<h:outputText value="#{mex['bancometallo.fax']}" />
+						<p:inputText id="fax" value="#{bancometalli.fax}"
+							maxlength="100">
+						</p:inputText>
+						<p:commandButton id="addbancometallibutton"
+							value="#{mex['button.salva']}" update="formnuovobancometallo"
+							action="#{bancometalliBV.saveBancometalli}" ajax="false" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

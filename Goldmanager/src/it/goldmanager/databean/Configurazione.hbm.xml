@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Configurazione" table="configurazione">
+        <id name="idConfigurazione" type="java.lang.Integer">
+            <column name="ID_CONFIGURAZIONE" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeConfigurazione" type="string">
+            <column name="NOME_CONFIGURAZIONE" not-null="true" unique="true">
+                <comment>Nome della configurazione</comment>
+            </column>
+        </property>
+        <property name="descConfigurazione" type="string">
+            <column name="DESC_CONFIGURAZIONE">
+                <comment>Valore della chiave nome</comment>
+            </column>
+        </property>
+        <property name="attivoConfigurazione" type="boolean">
+            <column name="ATTIVO_CONFIGURAZIONE" not-null="true" />
+        </property>
+        <property name="modificato" type="timestamp">
+            <column name="MODIFICATO" length="19">
+                <comment>Data modifica della configurazione</comment>
+            </column>
+        </property>
+         <set name="tipometallos" inverse="true">
+            <key>
+                <column name="ID_CONFIGURAZIONE" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Tipometallo" />
+        </set>
+    </class>
+</hibernate-mapping>

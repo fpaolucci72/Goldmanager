@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Attovenditaattr" table="attovenditaattr">
+        <id name="idAttovenditaattr" type="java.lang.Integer">
+            <column name="ID_ATTOVENDITAATTR" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="attovendita" class="it.goldmanager.databean.Attovendita" fetch="select">
+            <column name="ID_ATTOVENDITA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipometallo" class="it.goldmanager.databean.Tipometallo" fetch="select">
+            <column name="ID_TIPOMETALLO" not-null="true" />
+        </many-to-one>
+        <property name="descOggetto" type="string">
+            <column name="DESC_OGGETTO" not-null="true">
+                <comment>Descrizione dell oggetto in vendita</comment>
+            </column>
+        </property>
+        <property name="peso" type="string">
+            <column name="PESO" not-null="true">
+                <comment>Peso in grammi dell oggetto in vendita</comment>
+            </column>
+        </property>
+        <property name="scarto" type="string">
+            <column name="SCARTO" not-null="true">
+                <comment>Scarto in grammi dell oggetto in vendita</comment>
+            </column>
+        </property>
+        <property name="pesoNetto" type="string">
+            <column name="PESO_NETTO" not-null="true">
+                <comment>Peso netto dell oggetto in vendita</comment>
+            </column>
+        </property>
+        <property name="totale" type="string">
+            <column name="TOTALE" not-null="true">
+                <comment>Totale del prezzo dell oggetto in vendita</comment>
+            </column>
+        </property>
+           <property name="prezzoRiferimento" type="string">
+            <column name="PREZZO_RIFERIMENTO" not-null="true">
+                <comment>Prezzo di vendita dell oro o argento del giorno</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

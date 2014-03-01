@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<p:panel header="#{mex['vendita.stampa.titolo']}" style="width:50%"
+				footer="">
+				<h:form id="addattr">
+					<p:growl id="messages" />
+					<p:dataTable value="#{attovenditaStampaV.listattoattr}" var="attr"
+						id="list" emptyMessage="#{mex['mex.general.norecord']}">
+						<p:column headerText="#{mex['attovenditaattr.carati']}"
+							style="width:100px">
+							<h:outputText
+								value="#{attr.tipometallo.descTipometallo} #{attr.tipometallo.nomeTipometallo}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.peso']}"
+							style="width:50px">
+							<h:outputText value="#{attr.peso}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.scarto']}"
+							style="width:50px">
+							<h:outputText value="#{attr.scarto}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.pesonetto']}"
+							style="width:50px">
+							<h:outputText value="#{attr.pesoNetto}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.descoggetto']}"
+							style="width:50px">
+							<h:outputText value="#{attr.descOggetto}" />
+						</p:column>
+						<p:column
+							headerText="#{mex['attovenditaattr.prezzo.riferimento']}"
+							style="width:50px">
+							<h:outputText value="#{attr.prezzoRiferimento}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.totale']}"
+							style="width:50px">
+							<h:outputText value="#{attr.totale}" />
+						</p:column>
+					</p:dataTable>
+					<h:panelGrid columns="4" cellpadding="3" id="saveform">
+						<h:outputText value="#{mex['vendita.identificativo']}"
+							style="font-weight:bold" />
+						<p:inputText id="numeroAttoVendita" required="true"
+							requiredMessage="#{mex['mex.atto.numero.required']}"
+							value="#{attovenditaStampaV.numAtto}"
+							maxlength="5">
+						</p:inputText>
+						<h:outputText value="#{mex['vendita.tipoPagamento']}"
+							style="font-weight:bold" />
+						<p:inputText id="tipoPagamento" required="true"
+							requiredMessage="#{mex['mex.tipo.pagamento.required']}"
+							value="#{attovenditaStampaV.tipoPag}"
+							maxlength="100">
+						</p:inputText>
+					</h:panelGrid>
+					<h:inputHidden value="#{flash.idattovenditaflash}" id="hiddenId" />
+					<h:panelGrid columns="2" cellpadding="3">
+					<p:commandButton id="addbutton"
+							value="#{mex['button.salva']}" update="addattr"
+							action="#{attovenditaStampaV.createNumAttovendita}" ajax="false" />
+						<p:commandButton id="addstampabutton"
+							value="#{mex['button.stampa']}" update="addattr"
+							action="#{attovenditaStampaV.printAttovendita}" ajax="false" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vendita" language="groovy" pageWidth="595" pageHeight="620" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24b6d4a4-59ff-4559-904e-157557a4d8a7">
+	<property name="ireport.zoom" value="2.1435888100000025"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<parameter name="Logo" class="java.lang.String"/>
+	<parameter name="intestazione" class="java.lang.String"/>
+	<parameter name="indirizzo" class="java.lang.String"/>
+	<parameter name="cap" class="java.lang.String"/>
+	<parameter name="citta" class="java.lang.String"/>
+	<parameter name="provincia" class="java.lang.String"/>
+	<parameter name="telefono" class="java.lang.String"/>
+	<parameter name="fax" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<parameter name="slIntestazione" class="java.lang.String"/>
+	<parameter name="slIndirizzo" class="java.lang.String"/>
+	<parameter name="slCap" class="java.lang.String"/>
+	<parameter name="slCitta" class="java.lang.String"/>
+	<parameter name="slProvincia" class="java.lang.String"/>
+	<parameter name="slPartitaIva" class="java.lang.String"/>
+	<parameter name="slCodicefiscale" class="java.lang.String"/>
+	<parameter name="numeroAttoVendita" class="java.lang.String"/>
+	<parameter name="inseritoAttoVendita" class="java.lang.String"/>
+	<parameter name="sesso" class="java.lang.String"/>
+	<parameter name="cognomeNome" class="java.lang.String"/>
+	<parameter name="dataNato" class="java.lang.String"/>
+	<parameter name="cittaNato" class="java.lang.String"/>
+	<parameter name="cittaIndRes" class="java.lang.String"/>
+	<parameter name="docTipoNum" class="java.lang.String"/>
+	<parameter name="docRilEmeSca" class="java.lang.String"/>
+	<parameter name="vendeA" class="java.lang.String"/>
+	<parameter name="vendite" class="java.util.List"/>
+	<parameter name="totaleAtto" class="java.lang.String"/>
+	<parameter name="tipoPagamento" class="java.lang.String"/>
+	<field name="descOggetto" class="java.lang.String"/>
+	<field name="peso" class="java.lang.String"/>
+	<field name="scarto" class="java.lang.String"/>
+	<field name="pesoNetto" class="java.lang.String"/>
+	<field name="totale" class="java.lang.String"/>
+	<field name="tipometallo.nomeTipometallo" class="java.lang.String"/>
+	<field name="tipometallo.descTipometallo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<image>
+				<reportElement uuid="0c6c8177-a50e-446c-8efd-ac66bfae42dd" x="0" y="0" width="103" height="96"/>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b99dd18a-9aa2-4256-b658-b341366f2937" x="113" y="0" width="258" height="20"/>
+				<textElement markup="none">
+					<font size="10" isBold="true"/>
+					<paragraph tabStopWidth="100"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intestazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b15b3e77-18e5-41ee-91eb-297eb588b4b9" x="113" y="20" width="176" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{indirizzo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="537d4cb6-c402-4140-8c0a-47ddd822bae5" x="113" y="33" width="38" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{cap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e6879987-092f-46b9-9dab-15ebc37b5fe5" x="151" y="33" width="41" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{citta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9bd626d6-96f3-434d-b662-f83d6126b660" x="192" y="33" width="97" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["("+$P{provincia}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dae1d987-21e3-4197-83c4-557144137ac4" x="113" y="46" width="23" height="13"/>
+				<textElement/>
+				<text><![CDATA[Tel.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="993da605-2465-47b4-8898-758aed31c3c5" x="136" y="46" width="153" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="61f9c95a-e0ed-4669-9e08-fa67facbce40" x="113" y="59" width="23" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fax.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="91f53bca-478a-4f40-a113-9d4382315619" x="136" y="59" width="153" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="29315c64-ef93-47ba-b648-f59f0ab4c614" x="113" y="73" width="176" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e61c167a-44fd-4536-b704-8d1843224a8f" x="378" y="0" width="167" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slIntestazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9368643b-1bb9-4cd2-997f-c804148c1945" x="378" y="33" width="44" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5e17584-1ec0-4831-bcdc-18a0414b05b9" x="378" y="20" width="167" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slIndirizzo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ea89f2d-abee-414c-9d9d-3c453eed8b83" x="422" y="33" width="48" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCitta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bb7f139-c271-4a91-b54b-61cf5dc31c65" x="470" y="33" width="75" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["("+$P{slProvincia}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="119d6804-e5e6-4797-bfa4-74806fec6809" x="378" y="46" width="34" height="13"/>
+				<textElement/>
+				<text><![CDATA[P.IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39b05c0f-8eab-4266-910f-8740571292a4" x="378" y="59" width="34" height="14"/>
+				<textElement/>
+				<text><![CDATA[C.Fisc.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="38cbf3b9-5737-4104-a6b3-1dde3f1a987b" x="412" y="46" width="133" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slPartitaIva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a52ee99-eae3-4efc-9bde-5b0c1570c3e7" x="412" y="59" width="133" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCodicefiscale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="151" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6398556b-b6ad-4604-ba42-5733205757cd" x="222" y="6" width="50" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeroAttoVendita}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a74601f4-3957-44d2-bf9e-e04caefe3fe2" x="272" y="6" width="163" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["del " + $P{inseritoAttoVendita}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b15ef43f-a2d8-4e91-8dcc-f67bc079dec9" x="114" y="6" width="108" height="20"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Atto di vendita N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17536980-efb1-4652-8db3-5eff122d5f04" x="1" y="31" width="28" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Oggi,]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy">
+				<reportElement uuid="01fa649e-9e15-4e0e-a75e-bc9a2b9d3c46" x="29" y="31" width="52" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6679f43f-0d11-4f9c-a2ff-e204f3843bbe" x="80" y="31" width="69" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ a ROMA (RM)]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement uuid="d3f768d3-728c-4dfe-ac2c-f253914dfc8a" x="1" y="44" width="65" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sesso}.equals("0") ? "La sottoscritta" : "Il sottoscritto"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dbf7e339-3910-472c-8a0d-70dea5590dd3" x="67" y="44" width="352" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cognomeNome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5b35102b-279f-4b0c-b4ed-63b00d013777" x="1" y="57" width="44" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sesso}.equals("0") ? "Nata il " : "Nato il"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45aab072-2e7b-408c-832e-4ab2466a07f3" x="45" y="57" width="64" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataNato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="114a16bf-d8b6-4afc-919d-b4fe05b35f7e" x="108" y="57" width="100" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["a " + $P{cittaNato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0effa3a6-fa1e-42ac-85bf-d251bf824cdc" x="1" y="70" width="55" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Residente a ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3f918979-d7a7-48a6-857d-bcc53f7bb241" x="57" y="70" width="364" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cittaIndRes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="40e248d5-b2c6-468b-be48-5dcad0e5eba9" x="1" y="83" width="55" height="13"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Documento]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="86ab6f97-ac3e-4556-95f7-ec4d99c26035" x="55" y="83" width="364" height="13"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{docTipoNum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fccde33a-64e0-4892-abe3-e9120d09ebe3" x="1" y="95" width="56" height="13"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[rilasciato il ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="05233d13-1043-4c3c-ad86-59823c538cbc" x="56" y="95" width="363" height="13"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{docRilEmeSca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="122624cf-8ecd-4b1c-97c5-964f4b458b73" x="219" y="112" width="53" height="13"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENDE A]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f9578efb-13cf-415a-9706-88dd2b2da8ac" x="1" y="125" width="477" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{vendeA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="76f4db44-267a-4a3f-98dc-2c8f9601c9e6" x="1" y="137" width="100" height="14"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[i seguenti oggetti:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Prevent">
+			<staticText>
+				<reportElement uuid="41aae3f2-b538-461b-80e5-e1603d022d93" x="3" y="1" width="63" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrizione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="55ed6d5a-e633-4356-8520-590987228ad5" x="259" y="0" width="71" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Titolo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="626e278e-700f-4dac-a510-9a8391c53855" x="331" y="0" width="47" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8df05a1d-c657-43c3-8c56-b95de6d09b2b" x="377" y="0" width="51" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ecfe4c8-0b56-4248-9c8d-3ce32afa83a0" x="428" y="0" width="62" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="31468ca2-5e81-4ed9-a55e-87c388ff3764" x="490" y="0" width="65" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Prevent">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="c52624ee-9ef9-46ab-b529-74a6f8bdb5dc" x="3" y="0" width="256" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{descOggetto} == null ? "" : $F{descOggetto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9d35e730-7f01-41af-a47f-b085e1a8d920" x="330" y="0" width="48" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{peso}  == null ? "" : $F{peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e66b9364-1b92-4af6-9257-ab17632e57c9" x="377" y="0" width="51" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{scarto} == null ? "" : $F{scarto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3cb13618-5a32-4a2a-96d0-a657852b4b97" x="427" y="0" width="63" height="13"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pesoNetto} == null ? "" : $F{pesoNetto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="73a10537-5b79-4ca4-bfc8-b9857aae9d58" x="489" y="0" width="66" height="13"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totale} == null ? "" : $F{totale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ec0712eb-8822-4850-8c70-295ccfc711f8" x="288" y="0" width="43" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipometallo.descTipometallo}  == null ? "" : $F{tipometallo.descTipometallo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19f054f6-9ee6-40c5-8a9d-e1fe65c0ac22" x="259" y="0" width="30" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipometallo.nomeTipometallo} == null ? "" : $F{tipometallo.nomeTipometallo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="43" splitType="Prevent">
+			<staticText>
+				<reportElement uuid="85ab2a7c-bcf1-4190-a0e8-eb353db76cdf" x="386" y="0" width="71" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importo totale]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="40f6e375-7e6b-4036-8ef0-bf253412ad5d" x="456" y="0" width="88" height="19"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totaleAtto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a72bff89-6442-4b29-98f9-a3d226c6dad8" x="1" y="23" width="79" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tipo pagamento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="baaa0b42-2405-4e2e-8a10-72d9549dddd2" x="80" y="23" width="209" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{tipoPagamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="221" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="67f325d7-5857-4bdb-bafb-767e8ba6d93d" x="1" y="0" width="108" height="11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Esente IVA art. 36 d.l. 41/95]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b96a751d-75f6-47ae-bef6-2c1559025f8d" x="1" y="11" width="434" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Il sottoscritto dichiara di essere un individuo privato, che gli oggetti sopra venduti sono usati e non di illecita provenienza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9df5dc28-d3b7-484a-9d8c-433ac35e83bf" x="1" y="21" width="281" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Dichiara inoltre di essere in possesso di tutti i diritti alla vendita degli stessi.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0a4475a-4dcd-4544-b0d6-75d58bc9826c" x="138" y="35" width="337" height="18"/>
+				<textElement/>
+				<text><![CDATA[Firma per accettazione _________________________________________]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1e1d4754-6596-4566-8f65-65111eb238e8" x="240" y="52" width="235" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["("+$P{cognomeNome}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="18cd5c92-9e40-4e32-80a3-41457ed6afe5" x="162" y="71" width="165" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORMATIVA AI SENSI DELL'ART.13]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="31a2ff61-c4ba-4ef8-be6a-158ed2702086" x="101" y="82" width="287" height="11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(Decreto.Lgs. del 30 giugno 2003 n.196 "GARANZIA DI RISERVATEZZA")]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b111c914-ec63-43b7-b0d7-fc630b972ffb" x="1" y="92" width="315" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Gentile Signore/Signora, ai sensi dell'art 13 Decreto Lgs. 30/06/03 n. 196, Le forniamo le seguenti informazioni:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5efc47c4-cfa9-4656-a8e2-df7a3e5b95e8" x="1" y="101" width="461" height="82"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[- I dati che gli sono stati richiesti, sono trattati per il normale espletamento delle attività aziendali interne.
+- I dati sono oggetto di tattamento su supporto cartaceo, magnetico, telematico, comunque nel pieno rispetto della normativa citata.
+- Il conferimento dei dati anagrafici completi, hanno natura obbligatoria ai fini del mantenimento del rapporto commerciale con la nostra Azienda.
+- L'eventuale rifiuto a fornire tali dati, comporterà l'impossibilità di prosecuzione del rapporto.
+- Potranno venire a conoscenza dei dati da Lei forniti, gli incaricati dell'azienda e le autorità delegate dietro una leggittima richiesta.
+- I dati non saranno soggetti a diffusione, tranne che per gli adempimenti di legge.
+- Titolare del trattamento è il titolare dell'azienda nella persona di: ________________
+Le ricordiamo infine, che in qualunque momento potrà esercitare i diritti di cui all'art 7 del D.Lgs. 196/03, in particolare il diritto di accedere ai propri dati personali,
+di richiederne rettifica, aggiornarli se incompleti, erronei o raccolti in violazione alla legge, noncè di opporsi al proprio trattamento per motivi leggittimi,
+rivolgendo le richieste al Titolare del trattamento.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0a4475a-4dcd-4544-b0d6-75d58bc9826c" x="138" y="183" width="337" height="18"/>
+				<textElement/>
+				<text><![CDATA[Firma per accettazione _________________________________________]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="1e1d4754-6596-4566-8f65-65111eb238e8" x="240" y="200" width="235" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["("+$P{cognomeNome}+")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

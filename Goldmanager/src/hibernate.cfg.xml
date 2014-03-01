@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="HibernateSession">
+		<property name="hibernate.show_sql">false</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1/goldmanager</property>
+		<property name="connection.username">webin54_goldmgr</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.password">g0ldmanag3r</property>
+		<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.use_sql_comments">false</property>
+		<!-- Disabilita cache di secondo livello. -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="cache.use_query_cache">false</property>
+		<property name="cache.use_minimal_puts">false</property>
+		<property name="max_fetch_depth">3</property>
+		<mapping resource="it/goldmanager/databean/Cliente.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Configurazione.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Documento.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Ruolo.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Utente.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Attovendita.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Attovenditaattr.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Bollavendita.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Tipometallo.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Negozio.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Bancometalli.hbm.xml" />
+		<mapping resource="it/goldmanager/databean/Comunicf.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

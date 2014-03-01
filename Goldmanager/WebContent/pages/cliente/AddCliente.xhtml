@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<h:form id="formnuovocliente">
+				<p:growl id="messages" life="12000" />
+				<p:panel header="#{mex['cliente.nuovo.titolo']}" style="width:50%"
+					footer="">
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputText value="#{mex['cliente.cognome']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="cognome"
+							value="#{cliente.cognome}" maxlength="100"
+							requiredMessage="#{mex['mex.cognome.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.nome']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="nome" value="#{cliente.nome}"
+							requiredMessage="#{mex['mex.nome.required']}" maxlength="60">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.email']}" />
+						<p:inputText id="email" value="#{cliente.email}" maxlength="100">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.telfisso']}"/>
+						<p:inputText id="telefono" value="#{cliente.telefono}" maxlength="20">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.telcell']}" />
+						<p:inputText id="mobile" value="#{cliente.mobile}" maxlength="20">
+						</p:inputText>						
+						<h:outputText value="#{mex['cliente.professione']}" />
+						<p:inputText id="professione" value="#{cliente.professione}"
+							maxlength="100">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.sesso']}"
+							style="font-weight:bold" />
+						<p:selectOneMenu required="true" id="sesso"							
+							requiredMessage="#{mex['mex.sesso.required']}">
+							<f:selectItem itemLabel="#{mex['label.combo']}" />
+							<f:selectItems value="#{clienteSV.sexList}" var="itm"
+								itemLabel="#{itm.name}" itemValue="#{itm.id}" />
+						</p:selectOneMenu>
+						<h:outputText value="#{mex['cliente.datanascdoc']}"
+							style="font-weight:bold" />
+						<p:calendar required="true" id="datanascdoc" showOn="button"
+							navigator="true" value="#{cliente.docDatanas}"
+							pattern="dd/MM/yyyy" yearRange="1912:2000" 
+							requiredMessage="#{mex['mex.datanascdoc.required']}">
+						</p:calendar>
+						<h:outputText value="#{mex['cliente.luogonascdoc']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="luogonascdoc"
+							value="#{cliente.docLuogonas}" maxlength="70"
+							requiredMessage="#{mex['mex.luogonascdoc.required']}">
+						</p:inputText>
+						
+						<h:outputText value="#{mex['cliente.cittanascf']}"/>
+						
+						<p:selectOneMenu  id="cittanascf">
+							<f:selectItem itemLabel="#{mex['label.combo']}" />
+							<f:selectItems value="#{clienteSV.cfList}" var="itm" 
+								itemLabel="#{itm.name}" itemValue="#{itm.id}" />
+							<p:ajax event="change" listener="#{clienteSV.calculateCf}" update="codicefiscale"></p:ajax>	
+						</p:selectOneMenu>
+						
+						<h:outputText value="#{mex['cliente.codicefiscale']}" />
+						<p:inputText id="codicefiscale" value="#{clienteSV.codicefiscale}"
+							maxlength="16">
+						</p:inputText>
+						
+						<h:outputText value="#{mex['cliente.naznascdoc']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="naznascdoc"
+							value="#{cliente.docNazionenas}" maxlength="100"
+							requiredMessage="#{mex['mex.naznascdoc.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.cittdoc']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="cittdoc"
+							value="#{cliente.docCittadinanza}" maxlength="100"
+							requiredMessage="#{mex['mex.cittdoc.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.indirizzores']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="indirizzores"
+							value="#{cliente.resIndirizzo}" maxlength="250"
+							requiredMessage="#{mex['mex.indirizzores.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.cittares']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="cittares"
+							value="#{cliente.resCitta}" maxlength="100"
+							requiredMessage="#{mex['mex.cittares.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.provinciares']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="provinciares"
+							value="#{cliente.resProvincia}" maxlength="5"
+							requiredMessage="#{mex['mex.provinciares.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.capres']}" />
+						<p:inputText id="capres" value="#{cliente.resCap}" maxlength="5">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.nazioneres']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="nazioneres"
+							value="#{cliente.resNazione}" maxlength="100"
+							requiredMessage="#{mex['mex.nazioneres.required']}">
+						</p:inputText>
+					</h:panelGrid>
+					<p:accordionPanel activeIndex="-1" id="paneldom">
+						<p:tab title="#{mex['label.domicilio']}">
+							<h:panelGrid columns="2" cellpadding="3">
+								<h:outputText value="#{mex['cliente.indirizzodom']}"
+									style="font-weight:bold" />
+								<p:inputText id="indirizzodom" value="#{cliente.domIndirizzo}"
+									maxlength="255">
+								</p:inputText>
+								<h:outputText value="#{mex['cliente.cittadom']}"
+									style="font-weight:bold" />
+								<p:inputText id="cittadom" value="#{cliente.domCitta}"
+									maxlength="100">
+								</p:inputText>
+								<h:outputText value="#{mex['cliente.provinciadom']}"
+									style="font-weight:bold" />
+								<p:inputText id="provinciadom" value="#{cliente.domProvincia}"
+									maxlength="5">
+								</p:inputText>
+								<h:outputText value="#{mex['cliente.capdom']}" />
+								<p:inputText id="capdom" value="#{cliente.domCap}" maxlength="5">
+								</p:inputText>
+								<h:outputText value="#{mex['cliente.nazionedom']}"
+									style="font-weight:bold" />
+								<p:inputText id="nazionedom" value="#{cliente.domNazione}"
+									maxlength="100">
+								</p:inputText>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputText value="#{mex['cliente.tipodoc']}"
+							style="font-weight:bold" />
+						<p:selectOneMenu id="tipodoc" required="true"  
+							requiredMessage="#{mex['mex.tipodoc.required']}">
+							<f:selectItem itemLabel="#{mex['label.combo']}" />
+							<f:selectItems value="#{clienteV.listDocAttivo}" var="lda"
+								itemLabel="#{lda.descrizione}" itemValue="#{lda.idDocumento}" />
+						</p:selectOneMenu>
+						<h:outputText value="#{mex['cliente.descdoc']}" />
+						<p:inputText id="docAltroDesc" value="#{cliente.docAltroDesc}"
+							maxlength="250">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.numdoc']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="numdoc"
+							value="#{cliente.docNumero}" maxlength="100"
+							requiredMessage="#{mex['mex.numdoc.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['cliente.datrildoc']}"
+							style="font-weight:bold" />
+						<p:calendar required="true" id="datrildoc" showOn="button"
+							navigator="true" value="#{cliente.docDataril}"
+							pattern="dd/MM/yyyy" yearRange="c-20:c" 
+							requiredMessage="#{mex['mex.datrildoc.required']}">
+						</p:calendar>
+						<h:outputText value="#{mex['cliente.datascadoc']}"
+							style="font-weight:bold" />
+						<p:calendar required="true" id="datascadoc" showOn="button"
+							navigator="true" value="#{cliente.docDatascad}"
+							pattern="dd/MM/yyyy" yearRange="c:c+20"
+							requiredMessage="#{mex['mex.datascadoc.required']}">
+						</p:calendar>
+						<h:outputText value="#{mex['cliente.emessodoc']}"
+							style="font-weight:bold" />
+						<p:inputText required="true" id="emessodoc"
+							value="#{cliente.docEmessoda}" maxlength="255"
+							requiredMessage="#{mex['mex.emessodoc.required']}">
+						</p:inputText>
+						<p:commandButton id="addclientebutton"
+							value="#{mex['button.salva']}" update="formnuovocliente"
+							action="#{clienteBV.saveCliente}" ajax="false" />
+						<p:commandButton id="addclientevendibutton"
+							value="#{mex['button.salva.vendi']}" update="formnuovocliente"
+							action="#{clienteBV.salvaVendi}" ajax="false" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

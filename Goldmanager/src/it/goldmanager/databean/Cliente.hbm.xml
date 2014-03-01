@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Cliente" table="cliente">
+        <id name="idCliente" type="java.lang.Integer">
+            <column name="ID_CLIENTE" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="documento" class="it.goldmanager.databean.Documento" fetch="select">
+            <column name="ID_DOCUMENTO" not-null="true" />
+        </many-to-one>
+        <property name="cognome" type="string">
+            <column name="COGNOME" not-null="true">
+                <comment>Cognome del cliente</comment>
+            </column>
+        </property>
+        <property name="nome" type="string">
+            <column name="NOME" not-null="true">
+                <comment>Nome del cliente</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100">
+                <comment>Email del cliente</comment>
+            </column>
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="20">
+                <comment>telefono del cliente</comment>
+            </column>
+        </property>
+        <property name="mobile" type="string">
+            <column name="MOBILE" length="20">
+                <comment>mobile del cliente</comment>
+            </column>
+        </property>
+        <property name="codicefiscale" type="string">
+            <column name="CODICEFISCALE" length="16">
+                <comment>Codice fiscale del cliente</comment>
+            </column>
+        </property>
+        <property name="sesso" type="boolean">
+            <column name="SESSO" not-null="true">
+                <comment>Indica il sesso del cliente 1=maschio=true 0=femmina=false</comment>
+            </column>
+        </property>
+        <property name="professione" type="string">
+            <column name="PROFESSIONE">
+                <comment>Professione del cliente</comment>
+            </column>
+        </property>
+        <property name="docAltroDesc" type="string">
+            <column name="DOC_ALTRO_DESC">
+                <comment>Descrizione documento quando non presente</comment>
+            </column>
+        </property>
+        <property name="docNumero" type="string">
+            <column name="DOC_NUMERO" length="100" not-null="true">
+                <comment>Numero del documento del cliente</comment>
+            </column>
+        </property>
+        <property name="docEmessoda" type="string">
+            <column name="DOC_EMESSODA" length="100" not-null="true">
+                <comment>Documento del cliente emesso da</comment>
+            </column>
+        </property>
+        <property name="docDataril" type="timestamp">
+            <column name="DOC_DATARIL" length="19" not-null="true">
+                <comment>Data rilascio del documento</comment>
+            </column>
+        </property>
+        <property name="docDatascad" type="timestamp">
+            <column name="DOC_DATASCAD" length="19" not-null="true">
+                <comment>Data scadenza del documento</comment>
+            </column>
+        </property>
+        <property name="docDatanas" type="timestamp">
+            <column name="DOC_DATANAS" length="19" not-null="true">
+                <comment>Data nascita del cliente</comment>
+            </column>
+        </property>
+        <property name="docLuogonas" type="string">
+            <column name="DOC_LUOGONAS" not-null="true">
+                <comment>Luogo nascita del cliente</comment>
+            </column>
+        </property>
+        <property name="docNazionenas" type="string">
+            <column name="DOC_NAZIONENAS" length="100" not-null="true">
+                <comment>Nazione nascita del cliente</comment>
+            </column>
+        </property>
+        <property name="docCittadinanza" type="string">
+            <column name="DOC_CITTADINANZA" not-null="true">
+                <comment>Cittadinanza del cliente</comment>
+            </column>
+        </property>
+        <property name="resIndirizzo" type="string">
+            <column name="RES_INDIRIZZO" not-null="true">
+                <comment>Indirizzo residenza del cliente</comment>
+            </column>
+        </property>
+        <property name="resCap" type="string">
+            <column name="RES_CAP" length="6" not-null="true">
+                <comment>Cap residenza del cliente</comment>
+            </column>
+        </property>
+        <property name="resCitta" type="string">
+            <column name="RES_CITTA" length="100" not-null="true">
+                <comment>Citta residenza del cliente</comment>
+            </column>
+        </property>
+        <property name="resProvincia" type="string">
+            <column name="RES_PROVINCIA" length="5" not-null="true">
+                <comment>Provincia residenza del cliente</comment>
+            </column>
+        </property>
+        <property name="resNazione" type="string">
+            <column name="RES_NAZIONE" length="100" not-null="true">
+                <comment>Nazione residenza del cliente</comment>
+            </column>
+        </property>
+        <property name="domIndirizzo" type="string">
+            <column name="DOM_INDIRIZZO">
+                <comment>Indirizzo domicilio del cliente</comment>
+            </column>
+        </property>
+        <property name="domCap" type="string">
+            <column name="DOM_CAP" length="6">
+                <comment>Cap domicilio del cliente</comment>
+            </column>
+        </property>
+        <property name="domCitta" type="string">
+            <column name="DOM_CITTA" length="100">
+                <comment>Citta domicilio del cliente</comment>
+            </column>
+        </property>
+        <property name="domProvincia" type="string">
+            <column name="DOM_PROVINCIA" length="5">
+                <comment>Provincia domicilio del cliente</comment>
+            </column>
+        </property>
+        <property name="domNazione" type="string">
+            <column name="DOM_NAZIONE" length="100">
+                <comment>Nazione domicilio del cliente</comment>
+            </column>
+        </property>
+        <property name="inserito" type="timestamp">
+            <column name="INSERITO" length="19" not-null="true">
+                <comment>Data inserimento del cliente</comment>
+            </column>
+        </property>
+        <property name="modificato" type="timestamp">
+            <column name="MODIFICATO" length="19">
+                <comment>Data modifica del cliente</comment>
+            </column>
+        </property>
+        <set name="attovenditas" inverse="true">
+            <key>
+                <column name="ID_CLIENTE" not-null="true" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Attovendita" />
+        </set>
+    </class>
+</hibernate-mapping>

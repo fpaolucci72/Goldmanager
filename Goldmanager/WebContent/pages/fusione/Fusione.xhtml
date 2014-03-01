@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">			
+				<h:form id="bolla">
+					<p:wizard widgetVar="wiz" flowListener="#{bollavenditaV.onFlowProcess}"
+						showStepStatus="true">
+						<p:tab id="listatto" title="#{mex['bolla.titolo.atto']}">
+							<p:growl id="growl" />
+							<p:panel header="#{mex['bolla.atto']}">
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<p:selectManyCheckbox value="#{bollavenditaV.selectedAtti}"
+										layout="pageDirection" required="true"
+										requiredMessage="#{mex['mex.atto.required']}">
+										<f:selectItems value="#{bollavenditaV.listAtti}" />
+									</p:selectManyCheckbox>
+								</h:panelGrid>
+							</p:panel>
+						</p:tab>
+						<p:tab id="bm" title="#{mex['bolla.titolo.bancometalli']}">
+							<p:growl id="growl1"  />
+							<p:panel header="#{mex['bolla.bancometalli']}">
+								<h:panelGrid columns="2" cellpadding="3" id="saveform">
+									<h:outputText value="#{mex['bolla.bancometalli']}"
+										style="font-weight:bold" />
+									<p:selectOneMenu id="bancometalli" required="true"
+										requiredMessage="#{mex['mex.bancometalli.required']}">
+										<f:selectItem itemLabel="#{mex['label.combo']}" />
+										<f:selectItems value="#{bollavenditaV.listBancometalli}" var="itm"
+											itemLabel="#{itm.intestazione}"
+											itemValue="#{itm.idBancometalli}" />
+									</p:selectOneMenu>									
+								</h:panelGrid>
+							</p:panel>
+						</p:tab>
+						<p:tab id="riep" title="#{mex['bolla.titolo.riepilogo']}">
+							<p:panel header="#{mex['bolla.riepilogo']}">
+								<p:growl id="growl2"/>
+								<h:panelGrid columns="2" cellpadding="3" id="riepilogo">
+								
+								
+								<p:dataTable id="list" var="item" value="#{bollavenditaV.listAttr}"
+									paginator="false">
+									<p:column headerText="#{mex['bolla.tipo.metallo']}">
+										<h:outputText value="#{item.tipometallo.descTipometallo}" /> <h:outputText value="#{item.tipometallo.nomeTipometallo}" />
+									</p:column>	
+									<p:column headerText="#{mex['bolla.peso.attr']}">
+										<h:outputText value="#{item.pesoNetto}" />
+									</p:column>	
+									<p:column headerText="#{mex['bolla.comprato.attr']}">
+										<h:outputText value="#{item.prezzoRiferimento}" />
+									</p:column>			
+									<p:column headerText="#{mex['bolla.totale.attr']}">
+										<h:outputText value="#{item.totale}" />
+									</p:column>									
+								</p:dataTable>
+								<h:outputText value="" />
+									<h:outputText value="#{mex['bolla.riepilogo.valore']}"
+										style="font-weight:bold" />
+									<p:inputText id="valoreGr" value="#{bollavenditaV.valoreGr}"
+										validatorMessage="#{mex['mex.value.double']}" maxlength="20"
+										required="true"
+										requiredMessage="#{mex['mex.valoregr.required']}">
+										<f:validateDoubleRange minimum="0.0" maximum="1000000.00" />
+										<p:ajax event="blur" update="importo"
+											listener="#{bollavenditaV.calculateImport}" />
+									</p:inputText>
+									<h:outputText value="#{mex['bolla.riepilogo.importo']}"
+										style="font-weight:bold" />
+									<p:inputText id="importo" value="#{bollavenditaV.importo}"
+										validatorMessage="#{mex['mex.value.double']}" maxlength="20"
+										required="true"
+										requiredMessage="#{mex['mex.bolla.importo.required']}">
+										<f:validateDoubleRange minimum="0.0" maximum="1000000.00" />
+										<p:ajax event="blur" update="valoreGr"
+											listener="#{bollavenditaV.calculateValoreGr}" />
+									</p:inputText>
+									<h:outputText value="#{mex['bolla.identificativo.fda']}"
+										style="font-weight:bold" />
+									<p:inputText id="numeroBollaFda" required="true"
+										requiredMessage="#{mex['mex.bollafda.numero.required']}"
+										value="#{bollavenditaV.numeroFda}" maxlength="5">
+									</p:inputText>
+									<h:outputText value="#{mex['bolla.identificativo.ddt']}"/>
+									<p:inputText id="numeroBollaDdt" 
+										value="#{bollavenditaV.numeroDdt}" maxlength="5">
+									</p:inputText>																											
+									<p:commandButton id="fdastampabutton" 
+										value="#{mex['button.stampa.fda']}" update="bolla"
+										action="#{bollavenditaV.savePrintBollaFda}" ajax="false" />
+									
+									<p:commandButton id="bollastampabutton" 
+										value="#{mex['button.stampa.ddt']}" update="bolla"
+										action="#{bollavenditaV.savePrintBollaDdt}" ajax="false" />
+								</h:panelGrid>
+							</p:panel>
+						</p:tab>
+					</p:wizard>
+				</h:form>			
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

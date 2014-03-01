@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<title><h:outputText value="#{mex['nome.progetto']}" /></title>	
+</h:head>
+<h:body>
+	<f:view locale="#{facesContext.externalContext.requestLocale}">
+		<center>
+			
+			<p:panel header="#{mex['label.attenzione']}" style="width:50%">
+				<h:panelGrid columns="2" cellpadding="2">					
+						<h:graphicImage library="images" name="alert.jpg" />
+						<h:outputText value="#{mex['mex.auth']}" />									
+				</h:panelGrid>
+			</p:panel>
+							
+		</center>		
+		
+	</f:view>
+</h:body>
+</html>
+
+

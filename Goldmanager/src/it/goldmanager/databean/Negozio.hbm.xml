@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Negozio" table="negozio">
+        <id name="idNegozio" type="java.lang.Integer">
+            <column name="ID_NEGOZIO" />
+            <generator class="identity" />
+        </id>
+        <property name="intestazione" type="string">
+            <column name="INTESTAZIONE">
+                <comment>Intestazione del negozio</comment>
+            </column>
+        </property>
+        <property name="indirizzo" type="string">
+            <column name="INDIRIZZO" not-null="true">
+                <comment>Indirizzo del negozio</comment>
+            </column>
+        </property>
+        <property name="cap" type="string">
+            <column name="CAP" not-null="true">
+                <comment>Cap del negozio</comment>
+            </column>
+        </property>
+        <property name="citta" type="string">
+            <column name="CITTA" not-null="true">
+                <comment>Citta del negozio</comment>
+            </column>
+        </property>
+        <property name="provincia" type="string">
+            <column name="PROVINCIA" length="20" not-null="true">
+                <comment>Provincia del negozio</comment>
+            </column>
+        </property>
+        <property name="codicefiscale" type="string">
+            <column name="CODICEFISCALE" length="16" not-null="true" unique="true">
+                <comment>Codice fiscale del proprietario del negozio</comment>
+            </column>
+        </property>
+        <property name="partitaIva" type="string">
+            <column name="PARTITA_IVA" length="50">
+                <comment>Partita iva del proprietario del negozio</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100">
+                <comment>Email del negozio</comment>
+            </column>
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="20">
+                <comment>Telefono del negozio</comment>
+            </column>
+        </property>
+        <property name="mobile" type="string">
+            <column name="MOBILE" length="20">
+                <comment>Mobile del negozio</comment>
+            </column>
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" length="20">
+                <comment>FAx del negozio</comment>
+            </column>
+        </property>
+        <property name="iban" type="string">
+            <column name="IBAN" not-null="true">
+                <comment>Iban del negozio</comment>
+            </column>
+        </property>
+        <property name="slIntestazione" type="string">
+            <column name="SL_INTESTAZIONE">
+                <comment>Intestazione della sede legale</comment>
+            </column>
+        </property>
+        <property name="slIndirizzo" type="string">
+            <column name="SL_INDIRIZZO" not-null="true">
+                <comment>Indirizzo della sede legale</comment>
+            </column>
+        </property>
+        <property name="slCap" type="string">
+            <column name="SL_CAP" not-null="true">
+                <comment>Cap della sede legale</comment>
+            </column>
+        </property>
+        <property name="slCitta" type="string">
+            <column name="SL_CITTA" not-null="true">
+                <comment>Citta della sede legale</comment>
+            </column>
+        </property>
+        <property name="slProvincia" type="string">
+            <column name="SL_PROVINCIA" length="20" not-null="true">
+                <comment>Provincia della sede legale</comment>
+            </column>
+        </property>
+        <property name="slCodicefiscale" type="string">
+            <column name="SL_CODICEFISCALE" length="16" not-null="true">
+                <comment>Codice fiscale della sede legale</comment>
+            </column>
+        </property>
+        <property name="slPartitaIva" type="string">
+            <column name="SL_PARTITA_IVA" length="50">
+                <comment>Partita iva della sede legale</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

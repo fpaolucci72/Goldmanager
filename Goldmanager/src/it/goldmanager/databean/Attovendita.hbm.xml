@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Attovendita" table="attovendita">
+        <id name="idAttovendita" type="java.lang.Integer">
+            <column name="ID_ATTOVENDITA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bollavendita" class="it.goldmanager.databean.Bollavendita" fetch="select">
+            <column name="ID_BOLLAVENDITA" />
+        </many-to-one>
+        <many-to-one name="cliente" class="it.goldmanager.databean.Cliente" fetch="select">
+            <column name="ID_CLIENTE" not-null="true" />
+        </many-to-one>
+        <property name="inserito" type="timestamp">
+            <column name="INSERITO" length="19" not-null="true">
+                <comment>Data inserimento dell atto</comment>
+            </column>
+        </property>
+        <property name="inseritoDa" type="string">
+            <column name="INSERITO_DA" not-null="true">
+                <comment>Utente che ha inserito atto</comment>
+            </column>
+        </property>
+        <property name="numeroAttoVendita" type="string">
+            <column name="NUMERO_ATTO_VENDITA">
+                <comment>Numero atto di vendita</comment>
+            </column>
+        </property>
+        <property name="totaleVendita" type="string">
+            <column name="TOTALE_VENDITA" not-null="true">
+                <comment>Totale dell atto di vendita</comment>
+            </column>
+        </property>
+        <property name="tipoPagamento" type="string">
+            <column name="TIPO_PAGAMENTO">
+                <comment>Tipo del pagamento</comment>
+            </column>
+        </property>     
+        <property name="tipoMetallo" type="string">
+            <column name="TIPO_METALLO" not-null="true">
+                <comment>Tipo di metallo se oro o argento</comment>
+            </column>
+        </property>
+        <set name="attovenditaattrs" inverse="true" lazy="true" cascade="all-delete-orphan">
+            <key>
+                <column name="ID_ATTOVENDITA" not-null="true" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Attovenditaattr" />
+        </set>
+    </class>
+</hibernate-mapping>

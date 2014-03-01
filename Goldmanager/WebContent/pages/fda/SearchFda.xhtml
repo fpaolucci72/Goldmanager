@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<h:form id="venditalist" prependId="false">
+				<p:growl />
+				<p:dataTable id="list" var="item" value="#{bollavenditaSV.listbolla}"
+					paginator="true" rows="15" paginatorPosition="bottom"
+					dynamic="true" emptyMessage="#{mex['mex.general.norecord']}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="#{mex['bolla.identificativo.fda']}"
+						sortBy="#{item.numeroFda}" filterBy="#{item.numeroFda}"
+						filterMatchMode="contains">
+						<h:outputText value="#{item.numeroFda}" />
+					</p:column>
+					<p:column headerText="#{mex['bolla.tipo.metallo']}"
+						sortBy="#{item.tipometalloBolla}"
+						filterBy="#{item.tipometalloBolla}" filterMatchMode="contains">
+						<h:outputText value="#{item.tipometalloBolla}" />
+					</p:column>
+					<p:column headerText="#{mex['bolla.riepilogo.importo']}"
+						style="width:50px">
+						<h:outputText value="#{item.totaleBolla}" />
+					</p:column>	
+					<p:column headerText="#{mex['bolla.datainserimento']}"
+						style="width:50px" sortBy="#{item.inserito}">
+						<h:outputText value="#{item.inserito}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>					
+					<p:column style="width: 20px">
+						<p:commandLink  action="#{bollavenditaSV.printBollavendita}"
+							title="#{mex['label.dettaglio']}" ajax="false" >
+							<h:panelGroup styleClass="ui-icon ui-icon-print" />
+							<f:setPropertyActionListener value="#{item}"
+								target="#{bollavenditaSV.selectedItem}" />
+						</p:commandLink>
+					</p:column>					
+				</p:dataTable>
+					
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

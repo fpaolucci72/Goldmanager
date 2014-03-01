@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Ruolo" table="ruolo">
+        <id name="idRuolo" type="java.lang.Integer">
+            <column name="ID_RUOLO" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeRuolo" type="string">
+            <column name="NOME_RUOLO" not-null="true" unique="true">
+                <comment>Nome del ruolo da abbinare all utente</comment>
+            </column>
+        </property>
+        <property name="descRuolo" type="string">
+            <column name="DESC_RUOLO">
+                <comment>Descrizione del ruolo</comment>
+            </column>
+        </property>
+        <property name="attivoRPc" type="boolean">
+            <column name="ATTIVO_R_PC" not-null="true">
+                <comment>Abilitazione nel vedere la parte pc 0=No 1=Si</comment>
+            </column>
+        </property>
+        <property name="attivoRMobile" type="boolean">
+            <column name="ATTIVO_R_MOBILE" not-null="true">
+                <comment>Abilitazione nel vedere la parte mobile 0=No 1=Si</comment>
+            </column>
+        </property>
+        <set name="utentes" inverse="true">
+            <key>
+                <column name="ID_RUOLO" not-null="true" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Utente" />
+        </set>
+    </class>
+</hibernate-mapping>

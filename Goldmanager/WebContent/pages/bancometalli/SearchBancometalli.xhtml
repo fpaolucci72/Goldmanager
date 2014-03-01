@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<h:form id="bancometallilist" prependId="false">
+				<p:growl />
+				<p:dataTable id="list" var="item" value="#{bancometalliSV.listBancometalli}"
+					paginator="true" rows="15" paginatorPosition="bottom"
+					dynamic="true" emptyMessage="#{mex['mex.general.norecord']}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="#{mex['bancometallo.intestazione']}"
+						sortBy="#{item.intestazione}" filterBy="#{item.cognome}"
+						filterMatchMode="contains">
+						<h:outputText value="#{item.intestazione}" />
+					</p:column>
+					<p:column headerText="#{mex['bancometallo.cognome']}"
+						sortBy="#{item.cognome}" filterBy="#{item.cognome}"
+						filterMatchMode="contains">
+						<h:outputText value="#{item.cognome}" />
+					</p:column>
+					<p:column headerText="#{mex['bancometallo.nome']}" sortBy="#{item.nome}"
+						filterBy="#{item.nome}" filterMatchMode="contains">
+						<h:outputText value="#{item.nome}" />
+					</p:column>				
+					<p:column headerText="#{mex['bancometallo.telfisso']}"
+						style="width:50px">
+						<h:outputText value="#{item.telefono}" />
+					</p:column>									
+														
+										
+					<p:column style="width:20px">
+						<p:commandLink action="#{bancometalliSV.goToMod}" value=" "
+							title="#{mex['label.modifica']}"
+							styleClass="ui-icon ui-icon-pencil" ajax="false">
+							<f:setPropertyActionListener target="#{bancometalliSV.selectedItem}"
+								value="#{item}" />
+						</p:commandLink>
+					</p:column>
+					<p:column style="width: 20px">
+						<p:commandLink oncomplete="deleteDlg.show();"
+							title="#{mex['label.cancella']}"
+							rendered="#{empty item.bollavenditas}">
+							<h:panelGroup styleClass="ui-icon ui-icon-trash" />
+							<f:setPropertyActionListener value="#{item}"
+								target="#{bancometalliSV.selectedItem}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+				<p:confirmDialog widgetVar="deleteDlg" id="deleteDialog"
+					header="#{mex['label.cancella']}"
+					message="#{mex['mex.confirm.delete.bancometalli']}" width="400" modal="true"
+					closable="false" severity="alert">
+					<h:panelGroup layout="block" style="text-align: right">
+						<p:commandButton value="#{mex['button.si']}"
+							action="#{bancometalliSV.deleteBancometalli}"
+							oncomplete="deleteDlg.hide();" update="list" />
+						<p:commandButton value="#{mex['button.no']}"
+							action="#{bancometalliSV.noConfirm}" oncomplete="deleteDlg.hide();" />
+					</h:panelGroup>
+				</p:confirmDialog>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

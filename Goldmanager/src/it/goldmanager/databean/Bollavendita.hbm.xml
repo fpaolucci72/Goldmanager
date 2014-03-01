@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2012 0.37.12 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Bollavendita" table="bollavendita">
+        <id name="idBollavendita" type="java.lang.Integer">
+            <column name="ID_BOLLAVENDITA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bancometalli" class="it.goldmanager.databean.Bancometalli" fetch="select">
+            <column name="ID_BANCOMETALLI" not-null="true" />
+        </many-to-one>
+        <property name="inserito" type="timestamp">
+            <column name="INSERITO" length="19" not-null="true">
+                <comment>Data inserimento della bolla</comment>
+            </column>
+        </property>
+        <property name="inseritoDa" type="string">
+            <column name="INSERITO_DA" not-null="true">
+                <comment>Utente che ha inserito bolla</comment>
+            </column>
+        </property>
+        <property name="totaleBolla" type="string">
+            <column name="TOTALE_BOLLA" not-null="true">
+                <comment>Totale della bolla</comment>
+            </column>
+        </property>
+         <property name="pesoGrBolla" type="string">
+            <column name="PESO_GR_BOLLA" not-null="true">
+                <comment>Totale peso grammi della bolla</comment>
+            </column>
+        </property>
+        <property name="valoreGrBolla" type="string">
+            <column name="VALORE_GR_BOLLA" not-null="true">
+                <comment>Valore al grammo della bolla</comment>
+            </column>
+        </property>
+        <property name="tipometalloBolla" type="string">
+            <column name="TIPOMETALLO_BOLLA" not-null="true">
+                <comment>Tipometallo della bolla</comment>
+            </column>
+        </property>
+         <property name="numeroFda" type="string">
+            <column name="NUMERO_FDA">
+                <comment>Numero della fda</comment>
+            </column>
+        </property>
+         <property name="numeroDdt" type="string">
+            <column name="NUMERO_DDT" >
+                <comment>Numero della ddt</comment>
+            </column>
+        </property>
+        <set name="attovenditas" inverse="true">
+            <key>
+                <column name="ID_BOLLAVENDITA" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Attovendita" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<h:form id="clientelist" prependId="false">
+				<p:growl />
+				<p:dataTable id="list" var="item" value="#{clienteSV.listCliente}"
+					paginator="true" rows="15" paginatorPosition="bottom"
+					dynamic="true" emptyMessage="#{mex['mex.general.norecord']}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="#{mex['cliente.cognome']}"
+						sortBy="#{item.cognome}" filterBy="#{item.cognome}"
+						filterMatchMode="contains">
+						<h:outputText value="#{item.cognome}" />
+					</p:column>
+					<p:column headerText="#{mex['cliente.nome']}" sortBy="#{item.nome}"
+						filterBy="#{item.nome}" filterMatchMode="contains">
+						<h:outputText value="#{item.nome}" />
+					</p:column>
+					<p:column headerText="#{mex['cliente.datanascdoc']}"
+						style="width:50px" sortBy="#{item.docDatanas}">
+						<h:outputText value="#{item.docDatanas}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="#{mex['cliente.luogonascdoc']}"
+						style="width:50px" sortBy="#{item.docLuogonas}">
+						<h:outputText value="#{item.docLuogonas}" />
+					</p:column>
+					<p:column headerText="#{mex['cliente.naznascdoc']}"
+						style="width:50px" sortBy="#{item.docNazionenas}">
+						<h:outputText value="#{item.docNazionenas}" />
+					</p:column>									
+					<p:column style="width:20px">
+						<p:commandLink action="#{clienteSV.goToAtto}" value=" "
+							title="#{mex['cliente.vendita']}"  rendered="#{!empty item.attovenditas}"
+							styleClass="ui-icon ui-icon-folder-open" ajax="false">
+							<f:setPropertyActionListener target="#{clienteSV.selectedItem}"
+								value="#{item}" />
+						</p:commandLink>
+					</p:column>												
+					<p:column style="width:20px">
+						<p:commandLink action="#{clienteSV.goToVendita}" value=" "
+							title="#{mex['label.vendita']}"
+							styleClass="ui-icon ui-icon-cart" ajax="false">
+							<f:setPropertyActionListener target="#{clienteSV.selectedItem}"
+								value="#{item}" />
+						</p:commandLink>
+					</p:column>									
+					<p:column style="width:20px">
+						<p:commandLink action="#{clienteSV.goToMod}" value=" "
+							title="#{mex['label.modifica']}"
+							styleClass="ui-icon ui-icon-pencil" ajax="false">
+							<f:setPropertyActionListener target="#{clienteSV.selectedItem}"
+								value="#{item}" />
+						</p:commandLink>
+					</p:column>
+					<p:column style="width: 20px">
+						<p:commandLink oncomplete="deleteDlg.show();"
+							title="#{mex['label.cancella']}"
+							rendered="#{empty item.attovenditas}">
+							<h:panelGroup styleClass="ui-icon ui-icon-trash" />
+							<f:setPropertyActionListener value="#{item}"
+								target="#{clienteSV.selectedItem}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+				<p:confirmDialog widgetVar="deleteDlg" id="deleteDialog"
+					header="#{mex['label.cancella']}"
+					message="#{mex['mex.confirm.delete']}" width="400" modal="true"
+					closable="false" severity="alert">
+					<h:panelGroup layout="block" style="text-align: right">
+						<p:commandButton value="#{mex['button.si']}"
+							action="#{clienteSV.deleteCliente}"
+							oncomplete="deleteDlg.hide();" update="list" />
+						<p:commandButton value="#{mex['button.no']}"
+							action="#{clienteSV.noConfirm}" oncomplete="deleteDlg.hide();" />
+					</h:panelGroup>
+				</p:confirmDialog>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><h:outputText value="#{mex['nome.progetto']}" /></title>	
+	<link rel="shortcut icon" href="/Goldmanager/resources/images/favicon.ico" />
+</h:head>
+<h:body>
+	<f:view locale="#{facesContext.externalContext.requestLocale}">
+		<center><h:form id="formlogin">
+			<p:growl id="messages" />
+			<p:panel header="#{mex['nome.progetto']}" style="width:50%" footer="">								
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="#{mex['login.username']}" />
+						<p:inputText required="true" id="username"
+							value="#{authenticationBean.username}"
+							requiredMessage="#{mex['mex.username.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['login.password']}" />
+						<p:password feedback="false" id="password" required="true"
+							value="#{authenticationBean.password}"
+							requiredMessage="#{mex['mex.password.required']}" />
+						<p:message for="loginbutton"></p:message>
+						<p:commandButton id="loginbutton" value="#{mex['button.entra']}"
+							update="formlogin" action="#{authenticationBean.login}"
+							ajax="false" />
+					</h:panelGrid>						
+			</p:panel>
+		</h:form></center>
+	</f:view>
+</h:body>
+</html>
+
+

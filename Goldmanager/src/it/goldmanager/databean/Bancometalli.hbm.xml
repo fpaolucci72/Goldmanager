@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-nov-2012 0.37.12 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Bancometalli" table="bancometalli">
+        <id name="idBancometalli" type="java.lang.Integer">
+            <column name="ID_BANCOMETALLI" />
+            <generator class="identity" />
+        </id>
+        <property name="intestazione" type="string">
+            <column name="INTESTAZIONE" not-null="true">
+                <comment>Intestazione del bancometalli</comment>
+            </column>
+        </property>
+        <property name="cognome" type="string">
+            <column name="COGNOME" not-null="true">
+                <comment>Cognome del riferimento al bancometalli</comment>
+            </column>
+        </property>
+        <property name="nome" type="string">
+            <column name="NOME" not-null="true">
+                <comment>Nome del riferimento al bancometalli</comment>
+            </column>
+        </property>
+        <property name="indirizzo" type="string">
+            <column name="INDIRIZZO" not-null="true">
+                <comment>Indirizzo del bancometalli</comment>
+            </column>
+        </property>
+        <property name="cap" type="string">
+            <column name="CAP" length="5" not-null="true">
+                <comment>Cap del bancometalli</comment>
+            </column>
+        </property>
+        <property name="citta" type="string">
+            <column name="CITTA" not-null="true">
+                <comment>Citta del bancometalli</comment>
+            </column>
+        </property>
+        <property name="provincia" type="string">
+            <column name="PROVINCIA" length="20" not-null="true">
+                <comment>Provincia del bancometalli</comment>
+            </column>
+        </property>
+        <property name="codicefiscale" type="string">
+            <column name="CODICEFISCALE" length="16">
+                <comment>Codice fiscale del proprietario del bancometalli</comment>
+            </column>
+        </property>
+        <property name="partitaIva" type="string">
+            <column name="PARTITA_IVA" length="50">
+                <comment>Partita iva del proprietario del bancometalli</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100">
+                <comment>Email del bancometalli</comment>
+            </column>
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="20">
+                <comment>Telefono del bancometalli</comment>
+            </column>
+        </property>
+        <property name="mobile" type="string">
+            <column name="MOBILE" length="20">
+                <comment>Mobile del bancometalli</comment>
+            </column>
+        </property>
+        <property name="fax" type="string">
+            <column name="FAX" length="20">
+                <comment>FAx del bancometalli</comment>
+            </column>
+        </property>
+        <set name="bollavenditas" inverse="true">
+            <key>
+                <column name="ID_BANCOMETALLI" not-null="true" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Bollavendita" />
+        </set>
+    </class>
+</hibernate-mapping>

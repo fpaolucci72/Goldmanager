@@ -1,0 +1,13 @@
+.who {
+	font-family: 'Verdana,Arial,sans-serif';
+	width: 1050px;
+	background: #fff;
+	padding: 5px;
+	margin: 0 auto;
+	font-style: italic;
+	color: red;
+}
+
+.ui-widget, .ui-widget .ui-widget { 
+	font-size: 85% !important; 
+}

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Bolla" language="groovy" pageWidth="595" pageHeight="500" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24b6d4a4-59ff-4559-904e-157557a4d8a7">
+	<property name="ireport.zoom" value="2.1435888100000025"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="246"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="Logo" class="java.lang.String"/>
+	<parameter name="intestazione" class="java.lang.String"/>
+	<parameter name="indirizzo" class="java.lang.String"/>
+	<parameter name="cap" class="java.lang.String"/>
+	<parameter name="citta" class="java.lang.String"/>
+	<parameter name="provincia" class="java.lang.String"/>
+	<parameter name="telefono" class="java.lang.String"/>
+	<parameter name="fax" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<parameter name="slIntestazione" class="java.lang.String"/>
+	<parameter name="slIndirizzo" class="java.lang.String"/>
+	<parameter name="slCap" class="java.lang.String"/>
+	<parameter name="slCitta" class="java.lang.String"/>
+	<parameter name="slProvincia" class="java.lang.String"/>
+	<parameter name="slPartitaIva" class="java.lang.String"/>
+	<parameter name="slCodicefiscale" class="java.lang.String"/>
+	<parameter name="numeroBolla" class="java.lang.String"/>
+	<parameter name="inseritoBolla" class="java.lang.String"/>
+	<parameter name="intestazioneBM" class="java.lang.String"/>
+	<parameter name="indirizzoBM" class="java.lang.String"/>
+	<parameter name="capCittaPrBM" class="java.lang.String"/>
+	<parameter name="iva" class="java.lang.String"/>
+	<parameter name="codfiscale" class="java.lang.String"/>
+	<parameter name="regIva" class="java.lang.String"/>
+	<parameter name="iban" class="java.lang.String"/>
+	<parameter name="regVidimato" class="java.lang.String"/>
+	<parameter name="totaleBolla" class="java.lang.String"/>
+	<parameter name="pesoGr" class="java.lang.String"/>
+	<parameter name="valoreGr" class="java.lang.String"/>
+	<parameter name="tipoMet" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<image>
+				<reportElement uuid="0c6c8177-a50e-446c-8efd-ac66bfae42dd" x="0" y="0" width="103" height="96"/>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="b99dd18a-9aa2-4256-b658-b341366f2937" x="113" y="0" width="258" height="20"/>
+				<textElement markup="none">
+					<font size="10" isBold="true"/>
+					<paragraph tabStopWidth="100"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intestazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b15b3e77-18e5-41ee-91eb-297eb588b4b9" x="113" y="20" width="176" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{indirizzo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="537d4cb6-c402-4140-8c0a-47ddd822bae5" x="113" y="33" width="38" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{cap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e6879987-092f-46b9-9dab-15ebc37b5fe5" x="151" y="33" width="41" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{citta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9bd626d6-96f3-434d-b662-f83d6126b660" x="192" y="33" width="97" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["("+$P{provincia}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dae1d987-21e3-4197-83c4-557144137ac4" x="113" y="46" width="23" height="13"/>
+				<textElement/>
+				<text><![CDATA[Tel.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="993da605-2465-47b4-8898-758aed31c3c5" x="136" y="46" width="153" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="61f9c95a-e0ed-4669-9e08-fa67facbce40" x="113" y="59" width="23" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fax.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="91f53bca-478a-4f40-a113-9d4382315619" x="136" y="59" width="153" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="29315c64-ef93-47ba-b648-f59f0ab4c614" x="113" y="73" width="176" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e61c167a-44fd-4536-b704-8d1843224a8f" x="378" y="0" width="167" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slIntestazione}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9368643b-1bb9-4cd2-997f-c804148c1945" x="378" y="33" width="44" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5e17584-1ec0-4831-bcdc-18a0414b05b9" x="378" y="20" width="167" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slIndirizzo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ea89f2d-abee-414c-9d9d-3c453eed8b83" x="422" y="33" width="48" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCitta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bb7f139-c271-4a91-b54b-61cf5dc31c65" x="470" y="33" width="75" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["("+$P{slProvincia}+")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="119d6804-e5e6-4797-bfa4-74806fec6809" x="378" y="46" width="34" height="13"/>
+				<textElement/>
+				<text><![CDATA[P.IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39b05c0f-8eab-4266-910f-8740571292a4" x="378" y="59" width="34" height="14"/>
+				<textElement/>
+				<text><![CDATA[C.Fisc.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="38cbf3b9-5737-4104-a6b3-1dde3f1a987b" x="412" y="46" width="133" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slPartitaIva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a52ee99-eae3-4efc-9bde-5b0c1570c3e7" x="412" y="59" width="133" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{slCodicefiscale}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="345" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6398556b-b6ad-4604-ba42-5733205757cd" x="135" y="6" width="141" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeroBolla}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="41aae3f2-b538-461b-80e5-e1603d022d93" x="1" y="139" width="63" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrizione]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="626e278e-700f-4dac-a510-9a8391c53855" x="314" y="138" width="47" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso Gr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ecfe4c8-0b56-4248-9c8d-3ce32afa83a0" x="376" y="138" width="62" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valore al Gr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="31468ca2-5e81-4ed9-a55e-87c388ff3764" x="453" y="138" width="100" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importo]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a74601f4-3957-44d2-bf9e-e04caefe3fe2" x="1" y="25" width="275" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["del " + $P{inseritoBolla}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b15ef43f-a2d8-4e91-8dcc-f67bc079dec9" x="1" y="6" width="135" height="20"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fattura d'acconto N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17536980-efb1-4652-8db3-5eff122d5f04" x="276" y="12" width="38" height="14"/>
+				<textElement>
+					<font isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Spett.le]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="dbf7e339-3910-472c-8a0d-70dea5590dd3" x="276" y="26" width="278" height="14"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intestazioneBM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45aab072-2e7b-408c-832e-4ab2466a07f3" x="276" y="40" width="278" height="14"/>
+				<textElement>
+					<font isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{indirizzoBM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3f918979-d7a7-48a6-857d-bcc53f7bb241" x="276" y="54" width="278" height="14"/>
+				<textElement>
+					<font isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{capCittaPrBM}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="88e7dca5-d23a-4786-9331-450ae107114a" x="3" y="85" width="211" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="109f0e81-00c5-4128-b163-60fde4d4e639" x="3" y="85" width="211" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["P.IVA " + $P{iva}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="c7c5652f-9b19-47f8-8410-fd31a196185f" x="214" y="85" width="341" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="8cfcff36-c0cc-4a32-a1a8-a4d5854f18f8" x="214" y="85" width="341" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["C. Fiscale " +$P{codfiscale}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="be655fed-8a2f-4d07-b127-bb05744790e4" x="3" y="105" width="552" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="b7309ac9-3180-4b53-ab3e-113715dbf9b2" x="5" y="105" width="550" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Ns. IBAN:" +$P{iban}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="46766f1e-31c3-46c8-9cf4-6ddb6961f301" x="453" y="154" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{totaleBolla}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d357810a-26e4-4587-b9b6-daf65b86af47" x="316" y="154" width="47" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{pesoGr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="baf49f66-8225-4dc1-9ccb-326a57be86ac" x="378" y="154" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{valoreGr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b96a751d-75f6-47ae-bef6-2c1559025f8d" x="1" y="221" width="213" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[corrispettivo contenuto nei rottami provenienti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9df5dc28-d3b7-484a-9d8c-433ac35e83bf" x="1" y="231" width="213" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[da oggetti preziosi usati, destinati a fusione e affinazione.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2c16bd79-4b46-4f9d-9132-16bd63d1bca7" x="1" y="206" width="51" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{tipoMet}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="4bd642cc-a203-4c64-8664-71494deb504d" x="1" y="252" width="550" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="5efc47c4-cfa9-4656-a8e2-df7a3e5b95e8" x="9" y="267" width="461" height="55"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La suddetta operazione è soggetta al regime del margine di cui all'art.36 D.L. 41/95 convertito nella Legge N.85 del 1995
+e successive modificazioni.
+
+
+Documento esente dall'imposta di bollo ai sensi dell'art.6 della tabella B allegata al D.P.R. n.642/72]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

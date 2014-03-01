@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<p:growl id="messages" />
+			<p:panel header="#{mex['cambiopwd.titolo']}" style="width:50%"
+				footer="">
+				<h:form id="formcambiopwd">					
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="#{mex['cambiopwd.old.pwd']}" />
+								<p:password required="true" id="oldpwd"
+									requiredMessage="#{mex['mex.cambiopwd.old.pwd.required']}"
+									value="#{utenteBV.oldpwd}" feedback="false"></p:password>
+								<h:outputText value="#{mex['cambiopwd.new.pwd']}" />
+								<p:password required="true" id="newpwd" feedback="true"
+									requiredMessage="#{mex['mex.cambiopwd.new.pwd.required']}"
+									promptLabel="#{mex['cambiopwd.promptlabel.pwd']}"
+									weakLabel="#{mex['cambiopwd.weaklabel.pwd']}"
+									goodLabel="#{mex['cambiopwd.goodlabel.pwd']}"
+									strongLabel="#{mex['cambiopwd.stronglabel.pwd']}"
+									validatorMessage="#{mex['mex.cambiopwd.caratteripermessipassword']}"
+									value="#{utenteBV.newpwd}">
+									<f:validateRegex pattern="((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})" />
+									</p:password>
+								<h:outputText value="#{mex['cambiopwd.confirm.pwd']}" />
+								<p:password required="true" id="confirmpwd"
+									requiredMessage="#{mex['mex.cambiopwd.confirm.pwd.required']}"
+									value="#{utenteBV.confirmpwd}" feedback="false"></p:password>
+								<p:commandButton id="destbutton" value="#{mex['button.modifica']}"
+									update="formcambiopwd" action="#{utenteBV.changePwd}"
+									ajax="false" />							
+							</h:panelGrid>
+						</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

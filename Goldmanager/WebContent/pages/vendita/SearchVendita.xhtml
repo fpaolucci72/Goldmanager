@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<h:form id="venditalist" prependId="false">
+				<p:growl />
+				<p:dataTable id="list" var="item" value="#{attovenditaSV.listatto}"
+					paginator="true" rows="15" paginatorPosition="bottom"
+					dynamic="true" emptyMessage="#{mex['mex.general.norecord']}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="#{mex['vendita.identificativo']}"
+						sortBy="#{item.numeroAttoVendita}" filterBy="#{item.numeroAttoVendita}"
+						filterMatchMode="contains">
+						<h:outputText value="#{item.numeroAttoVendita}" />
+					</p:column>
+					<p:column headerText="#{mex['vendita.cognome']}"
+						sortBy="#{item.cliente.cognome}"
+						filterBy="#{item.cliente.cognome}" filterMatchMode="contains">
+						<h:outputText value="#{item.cliente.cognome}" />
+					</p:column>
+					<p:column headerText="#{mex['vendita.totalevendita']}"
+						style="width:50px">
+						<h:outputText value="#{item.totaleVendita}" />
+					</p:column>
+					<p:column headerText="#{mex['vendita.datainserimento']}"
+						style="width:50px" sortBy="#{item.inserito}">
+						<h:outputText value="#{item.inserito}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column style="width: 20px">
+						<p:commandLink  action="#{attovenditaSV.viewAttovendita}"
+							title="#{mex['label.dettaglio']}" ajax="false" >
+							<h:panelGroup styleClass="ui-icon ui-icon-search" />
+							<f:setPropertyActionListener value="#{item}"
+								target="#{attovenditaSV.selectedItem}" />
+						</p:commandLink>
+					</p:column>
+					<p:column style="width: 20px">
+						<p:commandLink oncomplete="deleteDlg.show();"
+							title="#{mex['label.cancella']}" 
+							rendered="#{empty item.bollavendita}" >
+							<h:panelGroup styleClass="ui-icon ui-icon-trash" />
+							<f:setPropertyActionListener value="#{item}"
+								target="#{attovenditaSV.selectedItem}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+				<p:confirmDialog widgetVar="deleteDlg" id="deleteDialog"
+					header="#{mex['label.cancella']}"
+					message="#{mex['mex.confirm.delete.vendita']}" width="400"
+					modal="true" closable="false" severity="alert">
+					<h:panelGroup layout="block" style="text-align: right">
+						<p:commandButton value="#{mex['button.si']}"
+							action="#{attovenditaSV.deleteAttovendita}"
+							oncomplete="deleteDlg.hide();" update="list" />
+						<p:commandButton value="#{mex['button.no']}"
+							action="#{attovenditaSV.noConfirm}"
+							oncomplete="deleteDlg.hide();" />
+					</h:panelGroup>
+				</p:confirmDialog>				
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="goldmanager.css" />
+	<title><h:outputText value="#{mex['nome.progetto']}" /></title>
+	<link rel="shortcut icon" href="/Goldmanager/resources/images/favicon.ico" />
+</h:head>
+
+<h:body>
+	<h:form id="generaltemplate">
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:submenu label="#{mex['label.cliente']}">
+				<p:menuitem value="#{mex['label.nuovo']}"
+					url="/pages/cliente/AddCliente.jsf" />
+				<p:menuitem value="#{mex['label.ricerca']}"
+					url="/pages/cliente/SearchCliente.jsf" />
+			</p:submenu>
+			<p:submenu label="#{mex['label.fatturadivendita']}">
+				<p:menuitem value="#{mex['label.ricerca']}"
+					url="/pages/vendita/SearchVendita.jsf" />
+			</p:submenu>
+			<p:submenu label="#{mex['label.bolla']}">
+				<p:menuitem value="#{mex['label.bolla.oro']}"
+					url="/pages/fusione/Fusione.jsf?tm=o" ajax="false">	
+				</p:menuitem>
+				<p:menuitem value="#{mex['label.bolla.argento']}"
+					url="/pages/fusione/Fusione.jsf?tm=a" ajax="false" />
+			</p:submenu>
+			<p:submenu label="#{mex['label.fatturadiacconto']}">
+				<p:menuitem value="#{mex['label.ricerca']}"
+					url="/pages/fda/SearchFda.jsf" />
+			</p:submenu>
+			<p:submenu label="#{mex['label.dtt']}">
+				<p:menuitem value="#{mex['label.ricerca']}"
+					url="/pages/ddt/SearchDdt.jsf" />
+			</p:submenu>		
+			<p:submenu label="#{mex['label.bancometalli']}">
+				<p:menuitem value="#{mex['label.nuovo']}"
+					url="/pages/bancometalli/AddBancometalli.jsf" />
+				<p:menuitem value="#{mex['label.ricerca']}"
+					url="/pages/bancometalli/SearchBancometalli.jsf" />
+			</p:submenu>
+			<p:submenu label="#{mex['label.utility']}">
+			<p:menuitem value="#{mex['label.stampa']}"
+					url="/pages/configurazione/Stampa.jsf" />
+				<p:menuitem value="#{mex['label.configura']}"
+					url="/pages/configurazione/Configura.jsf" />
+				<p:menuitem value="#{mex['label.cambiopwd']}"
+					url="/pages/utente/Cambiopwd.jsf" />
+			</p:submenu>
+			<p:menuitem value="#{mex['label.logout']}"
+				action="#{authenticationBean.logout}" />
+		</p:menubar>
+	</h:form>
+	<div class="who">
+		<h:outputText value=" #{mex['label.operatore']} " />
+		<h:outputText value=" #{goldmanagerSession.utente.cognome}" />
+		<h:outputText value=" #{goldmanagerSession.utente.nome}" />
+	</div>
+	<ui:insert name="content"></ui:insert>
+</h:body>
+</html>

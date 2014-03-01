@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Tipometallo" table="tipometallo">
+        <id name="idTipometallo" type="java.lang.Integer">
+            <column name="ID_TIPOMETALLO" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeTipometallo" type="string">
+            <column name="NOME_TIPOMETALLO" not-null="true" unique="true">
+                <comment>Nome del tipo metalli</comment>
+            </column>
+        </property>
+        <property name="descTipometallo" type="string">
+            <column name="DESC_TIPOMETALLO" />
+        </property>
+        <property name="attivoTipometallo" type="boolean">
+            <column name="ATTIVO_TIPOMETALLO" not-null="true" />
+        </property>
+        <property name="gruppoTipometallo" type="string">
+            <column name="GRUPPO_TIPOMETALLO" not-null="true">
+                <comment>Gruppo del tipo metalli 1=oro 2=argento</comment>
+            </column>
+        </property>
+        <set name="attovenditaattrs" inverse="true">
+            <key>
+                <column name="ID_TIPOMETALLO" not-null="true" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Attovenditaattr" />
+        </set>
+         <many-to-one name="configurazione" class="it.goldmanager.databean.Configurazione" fetch="select" >
+            <column name="ID_CONFIGURAZIONE" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

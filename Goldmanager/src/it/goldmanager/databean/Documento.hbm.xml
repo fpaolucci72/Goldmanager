@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-ott-2012 15.10.29 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Documento" table="documento">
+        <id name="idDocumento" type="java.lang.Integer">
+            <column name="ID_DOCUMENTO" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="NOME" not-null="true" unique="true">
+                <comment>Nome del documento</comment>
+            </column>
+        </property>
+        <property name="descrizione" type="string">
+            <column name="DESCRIZIONE" not-null="true">
+                <comment>Descrizione del documento</comment>
+            </column>
+        </property>
+        <property name="attivoDocumento" type="boolean">
+            <column name="ATTIVO_DOCUMENTO" not-null="true">
+                <comment>Indica se il documento e attivo 0=inattivo 1=attivo</comment>
+            </column>
+        </property>
+        <set name="clientes" inverse="true">
+            <key>
+                <column name="ID_DOCUMENTO" not-null="true" />
+            </key>
+            <one-to-many class="it.goldmanager.databean.Cliente" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<p:panel header="#{mex['vendita.nuovo.titolo']}" style="width:50%"
+				footer="">
+				<p:dataTable id="list" var="item"
+					value="#{attovenditaV.cliente}" paginator="false" rows="1">
+					<p:column headerText="#{mex['vendita.cognome']}">
+						<h:outputText value="#{item.cognome}" />
+					</p:column>
+					<p:column headerText="#{mex['vendita.nome']}">
+						<h:outputText value="#{item.nome}" />
+					</p:column>
+					<p:column headerText="#{mex['vendita.datanascita']}"
+						style="width:50px">
+						<h:outputText value="#{item.docDatanas}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="#{mex['vendita.luogonascita']}"
+						style="width:50px">
+						<h:outputText value="#{item.docLuogonas}" />
+					</p:column>
+				</p:dataTable>
+				<p:separator></p:separator>
+				<h:form id="addattr">
+					<p:growl id="messages" />
+					<h:inputHidden value="#{flash.idclienteflash}" id="hiddenId" />
+					<h:panelGrid columns="4" cellpadding="3" id="saveform">
+						<h:outputText value="#{mex['attovenditaattr.metallo']}"
+							style="font-weight:bold" />
+						<p:selectOneMenu id="metallo" required="true" 
+							requiredMessage="#{mex['mex.tipo.metallo.required']}">
+							<f:selectItem itemLabel="#{mex['label.combo']}" />
+							<f:selectItems value="#{attovenditaV.metalliList}" var="itm"
+								itemLabel="#{itm.name}" itemValue="#{itm.id}" />
+							<p:ajax update="carati,prezzoRiferimento"
+								listener="#{attovenditaV.handleMetalChange}" />
+						</p:selectOneMenu>
+						<h:outputText value="#{mex['attovenditaattr.carati']}"
+							style="font-weight:bold" />
+						<p:selectOneMenu id="carati" required="true" 
+							requiredMessage="#{mex['mex.carati.required']}">
+							<f:selectItem itemLabel="#{mex['label.combo']}" />
+							<f:selectItems value="#{attovenditaV.caratiList}" var="itm"
+								itemLabel="#{itm.name}" itemValue="#{itm.id}" />
+							<p:ajax update="prezzoRiferimento"
+								listener="#{attovenditaV.handlePrezzoChange}" />
+						</p:selectOneMenu>
+						<h:outputText value="#{mex['attovenditaattr.prezzo.riferimento']}"
+							style="font-weight:bold" />
+						<p:inputText id="prezzoRiferimento" required="true"
+							requiredMessage="#{mex['mex.prezzo.required']}"
+							value="#{attovenditaV.prezzoRiferimento}" maxlength="10"
+							validatorMessage="#{mex['mex.value.double']}">
+							<f:validateDoubleRange minimum="0.0" maximum="1000000.00" />
+							<p:ajax event="blur" update="totale"
+								 listener="#{attovenditaV.calculateWeightPrice}" />
+						</p:inputText>
+						<h:outputText value="#{mex['attovenditaattr.peso']}"
+							style="font-weight:bold" />
+						<p:inputText id="peso" value="#{attovenditaattr.peso}"
+							validatorMessage="#{mex['mex.value.double']}" maxlength="20"
+							required="true" requiredMessage="#{mex['mex.peso.required']}">
+							<f:validateDoubleRange minimum="0.0" maximum="1000000.00" />
+							<p:ajax event="blur" update="pesoNetto,totale"
+								 listener="#{attovenditaV.calculateWeightPrice}" />
+						</p:inputText>
+						<h:outputText value="#{mex['attovenditaattr.scarto']}"
+							style="font-weight:bold" />
+						<p:inputText id="scarto" value="#{attovenditaattr.scarto}"
+							validatorMessage="#{mex['mex.value.double']}" maxlength="20"
+							required="true" requiredMessage="#{mex['mex.scarto.required']}">
+							<f:validateDoubleRange minimum="0.0" maximum="1000000.00" />
+							<p:ajax event="blur" update="pesoNetto,totale"
+								 listener="#{attovenditaV.calculateWeightPrice}" />
+						</p:inputText>
+						<h:outputText value="#{mex['attovenditaattr.pesonetto']}"
+							style="font-weight:bold">
+						</h:outputText>
+						<h:outputText  id="pesoNetto" value="#{attovenditaV.pesoNetto}">
+						</h:outputText>
+						<h:outputText value="#{mex['attovenditaattr.descoggetto']}"
+							style="font-weight:bold" />
+						<p:inputText id="descOggetto"
+							validatorMessage="#{mex['mex.value.double']}"
+							value="#{attovenditaattr.descOggetto}" maxlength="50"
+							required="true" requiredMessage="#{mex['mex.desc.required']}">
+						</p:inputText>
+						<h:outputText value="#{mex['attovenditaattr.totale']}"
+							style="font-weight:bold" />
+						<p:inputText id="totale" value="#{attovenditaV.prezzoTotale}"
+							maxlength="20" required="true"
+							requiredMessage="#{mex['mex.prezzo.totale.required']}"
+							validatorMessage="#{mex['mex.value.double.due']}">
+							<f:validateDoubleRange minimum="0.0" maximum="1000000.00" />
+							<p:ajax event="blur" update="prezzoRiferimento"
+								 listener="#{attovenditaV.calculateWeightPrice}" />
+						</p:inputText>
+					</h:panelGrid>
+					<p:commandButton id="addclientevendibutton"
+						value="#{mex['button.aggiungi']}"
+						action="#{attovenditaattrV.addAttr}" update="addattr,list">
+					</p:commandButton>
+					<p:separator></p:separator>
+					<p:dataTable value="#{attovenditaattrV.attoList}" var="attr"
+						id="list" emptyMessage="#{mex['mex.general.norecord']}">
+						<p:column headerText="#{mex['attovenditaattr.carati']}"
+							style="width:100px">
+							<h:outputText
+								value="#{attr.tipometallo.descTipometallo} #{attr.tipometallo.nomeTipometallo}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.peso']}"
+							style="width:50px">
+							<h:outputText value="#{attr.peso}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.scarto']}"
+							style="width:50px">
+							<h:outputText value="#{attr.scarto}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.pesonetto']}"
+							style="width:50px">
+							<h:outputText value="#{attr.pesoNetto}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.descoggetto']}"
+							style="width:50px">
+							<h:outputText value="#{attr.descOggetto}" />
+						</p:column>
+						<p:column
+							headerText="#{mex['attovenditaattr.prezzo.riferimento']}"
+							style="width:50px">
+							<h:outputText value="#{attr.prezzoRiferimento}" />
+						</p:column>
+						<p:column headerText="#{mex['attovenditaattr.totale']}"
+							style="width:50px">
+							<h:outputText value="#{attr.totale}" />
+						</p:column>
+						<p:column style="width: 20px">
+						<p:commandLink action="#{attovenditaattrV.delRowAttr}" immediate="true" update="@form"
+							title="#{mex['label.cancella']}"  styleClass="ui-icon ui-icon-trash">							
+							<f:setPropertyActionListener value="#{attr}"
+								target="#{attovenditaattrV.selectedItem}" />
+						</p:commandLink>
+					</p:column>
+					</p:dataTable>
+					<h:panelGrid columns="2" cellpadding="3">
+						<p:commandButton id="addclientevendisalvabutton" immediate="true"
+							value="#{mex['button.salva']}" update="addattr"
+							action="#{attovenditaBV.saveAttovenditaAttr}" ajax="false" />
+						<p:commandButton id="addclientevendistampabutton" immediate="true"
+							value="#{mex['button.salva.stampa']}" update="addattr"
+							action="#{attovenditaBV.savePrintAttovenditaAttr}" ajax="false" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

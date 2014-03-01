@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-dic-2012 21.07.56 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="it.goldmanager.databean.Comunicf" table="comunicf">
+        <id name="idComunicf" type="java.lang.Integer">
+            <column name="ID_COMUNICF" />
+            <generator class="identity" />
+        </id>
+        <property name="codice" type="string">
+            <column name="CODICE" length="10" not-null="true" unique="true">
+                <comment>Codice catastale del comune</comment>
+            </column>
+        </property>
+        <property name="comune" type="string">
+            <column name="COMUNE" not-null="true">
+                <comment>Comune</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

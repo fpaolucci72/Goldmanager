@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="../templates/generaltemplate.xhtml">
+	<ui:define name="content">
+		<f:view locale="#{facesContext.externalContext.requestLocale}">
+			<p:panel header="#{mex['configurazione.stampa.titolo']}" style="width:50%"
+				footer="">
+				<h:form id="stampa">
+					<p:growl id="messages" />				
+					<h:panelGrid columns="2" cellpadding="3" id="stampaform">
+						<h:outputText value="#{mex['configurazione.stampa.fatturadivendita']}" />						
+						<p:commandButton id="stampavendita"
+							value="#{mex['button.stampa']}" update="stampa"
+							action="#{configurazioneStampaB.printAttovenditaEmpty}" ajax="false" />
+						<h:outputText value="#{mex['configurazione.stampa.fatturadiacconto']}"/>
+						<p:commandButton id="stampabolla"
+							value="#{mex['button.stampa']}" update="stampa"
+							action="#{configurazioneStampaB.printFdaEmpty}" ajax="false" />
+						<h:outputText value="#{mex['configurazione.stampa.ddt']}" />
+						<p:commandButton id="stampaddt"
+							value="#{mex['button.stampa']}" update="stampa"
+							action="#{configurazioneStampaB.printDdtEmpty}" ajax="false" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>
