@@ -1,0 +1,14 @@
+version 1.3
+data 20121231
+-Aggiunto codice fiscale automatico;
+-Rifatta la parte fusione oro con nuovi documenti;
+-Modificato il database con aggiunta colonna in bollavendita e tabella comuni;
+
+version 1.2
+data 20121212
+-Aggiunta stampa moduli vuoti;
+
+version 1.1
+data 20121209
+-Svuotati i campi in aggiunta attributo vendita;
+-Tolti i telefoni obbligatori;
